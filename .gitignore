@@ -1,3 +1,19 @@
+# LaTeX
+*.DS_Store
+*.log
+*.aux
+*.synctex.gz
+*.output
+*.out
+*.cmo
+*.cmi
+*.exe
+*.fdb_latexmk
+*.fls
+*.toc
+*.nav
+*.snm
+
 # Prerequisites
 *.d
 
