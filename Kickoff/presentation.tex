@@ -56,11 +56,11 @@ Zineb Moubarik}
 \end{frame}
 
 \begin{frame}
-    While the Flight Controller (FC) is the piece of software that controls the different physical components of the drone itself, the autopilot is what autonomously controls what the drone does.
+    To function nominally, a drone requires a Flight Controller (FC) to manage the different physical components, as well as some software in order to control how and where it flies. This is what PixHawks, PX4 and ArduPilot provide to name the ones we will be using.
 
     \vspace*{5mm}
 
-    Today, completely functionnal and ready-to-use drones are expensive. But it is technically possible to produce cheap drones using or inspired by PixHawks.
+    Unfortunately, today, completely functionnal and ready-to-use drones are expensive. But it is technically possible to produce cheap drones inspired by PixHawks/PX4 or ArduPilot.
 
 \end{frame}
 
@@ -69,17 +69,19 @@ Zineb Moubarik}
 \begin{frame}
     
     From a provided functionnal drone frame, Zhenyu Bai expressed the need :
+    
     \begin{itemize}
-        \item to produce the Arduino code using PixHawks and PX4 ;
+        \item to investigate currently available "almost ready-to-use" options, such as ArduPilot ; 
+        \item to make the drone fly using ArduPilot first, then using PixHawks and PX4 ;
     \end{itemize}
     
     \vspace*{5mm}
 
-    Subsequently, gradually, the following elements may be produced :
-
+    Subsequently, gradually, the following objectives will be set :
+    
     \begin{itemize}
-        \item the files to produce a custom-made PCB ;
-        \item a custom-made FC inspired by PixHawks ;
+        \item to produce a custom-made PCB ;
+        \item to produce a custom-made Flight Controller inspired by PixHawks and PX4, or possibly by ArduPilot ;
     \end{itemize}
 \end{frame}
 
@@ -128,8 +130,10 @@ Zineb Moubarik}
     \begin{minipage}{0.48\textwidth}
         Technical Deliverables :
         \begin{itemize}
-            \item Archive containinig the Arduino code that uses PixHawks and PX4 ;
-            \item Archive containinig all the required documents and files to reproduce a custom-made drone.
+            \item Version 0 : the components work together with ArduPilot ;
+            \item Version 1 : the drone can fly with ArduPilot ;
+            \item Version 2 : the drone can fly with PX4 and PixHawks ;
+            \item Version 3 : the drone can fly with a custom-made PCB and Flight Controller (may be suddivided).
         \end{itemize}
     \end{minipage}
 \end{frame}
@@ -141,11 +145,18 @@ Zineb Moubarik}
 
     \vspace*{10mm}
 
-    A private Repository will contain all of the code of the project. The Customer will be able to access it.
+    A private Repository will contain everything related to the project :
+    \begin{itemize}
+        \item Arduino programs (C++) ;
+        \item Component description files (PCB) ;
+        \item Markdown documentation ;
+        \item PDFs for the various deliverables, as well as their LaTeX code ;
+        \item More depending on how the project evolves.
+    \end{itemize}
+    
+    \vspace*{5mm}
 
-    \vspace*{10mm}
-
-    While most of the code will be written in C, there will also be LaTeX and components description files.
+    The Customer will be able to access it.
 \end{frame}
 
 
