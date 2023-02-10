@@ -132,33 +132,36 @@ void loop() {
 
     if (timeInMs > 30000){ // TIMEOUT
         while(1){
-            FLmotor.write(0);   // Write back 0 for safety measures
-            FRmotor.write(0);
-            BRmotor.write(0);
-            BLmotor.write(0);
+            writeAll(0);
             Serial.println("TimeOut");
             delay(1000);
         }
     }   
 
-    updateMotorSpeed();
 
     switch(etat){
     
         case IDLE:
-            
+            currentBaseSpeed = idleSpeed;
+            writeAll(0);
         break;;
 
 
         case STATIONNARY:
+            currentBaseSpeed = stationnarySpeed;
+            updateMotorSpeed();
         break;;
 
 
         case TAKEOFF:
+            currentBaseSpeed = takeOffSpeed;
+            updateMotorSpeed();
         break;;
 
 
         case FORWARD:
+            currentBaseSpeed = 0;
+            updateMotorSpeed();
         break;;
 
   }
@@ -169,14 +172,21 @@ void updateMotorSpeed(){
   ax = map(ax, -17000, 17000, -125, 125);
   ay = map(ay, -17000, 17000, -125, 125);
 
-  motorl_speed = currentBaseSpeed + motorl_offset - ax;
-  motorr_speed = currentBaseSpeed + motorr_offset + ax;
+  motorfl_speed = currentBaseSpeed + motorl_offset - ax;
+  motorfr_speed = currentBaseSpeed + motorr_offset + ax;
 
-  motorf_speed = currentBaseSpeed + motorf_offset - ay;
-  motorb_speed = currentBaseSpeed + motorb_offset + ay;
+  motorbr_speed = currentBaseSpeed + motorf_offset - ay;
+  motorbl_speed = currentBaseSpeed + motorb_offset + ay;
 
   analogWrite(motorf_pin2, motorf_speed);
   analogWrite(motorb_pin2, motorb_speed);
   analogWrite(motorr_pin2, motorr_speed);
   analogWrite(motorl_pin2, motorl_speed);
+}
+
+void writeAll(int value){
+    FLmotor.write(value);
+    FRmotor.write(value);
+    BRmotor.write(value);
+    BLmotor.write(value);
 }
