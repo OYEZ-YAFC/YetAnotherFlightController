@@ -14,6 +14,19 @@
 #include <Wire.h>
 #include <MPU6050.h>
 
+
+
+/*
+ * Automate states enum
+ */
+enum {
+    IDLE,
+    STATIONNARY,
+    TAKEOFF,
+    FORWARD
+} etat = IDLE;
+
+
 // Declaring the motors object
 Servo FLmotor;
 Servo FRmotor;
@@ -100,21 +113,48 @@ void setup() {
 }
 
 void loop() {
-  FLmotor.write(105);            // 
-  delay(1000);
-  FLmotor.write(91);            // 
-  delay(2000);
-  
-  /*
-  updateMotorSpeed();
-  timeInMs = millis();
-  
-  
-  if (timeInMs > 30000){
-    currentBaseSpeed = stationarySpeed;
-  }else if (timeInMs > 2000){
-    currentBaseSpeed = takeOffSpeed;
-  }*/
+    timeInMs = millis();
+
+    if (timeInMs > 30000){ // TIMEOUT
+        while(1){
+            Serial.println("TimeOut");
+            delay(1000);
+        }
+    }   
+
+    FLmotor.write(105);            // 
+    delay(1000);
+    FLmotor.write(91);            // 
+    delay(2000);
+
+    
+    updateMotorSpeed();
+    
+    
+    if (timeInMs > 30000){
+        currentBaseSpeed = stationarySpeed;
+    }else if (timeInMs > 2000){
+        currentBaseSpeed = takeOffSpeed;
+    }
+
+    switch(etat){
+    
+        case IDLE:
+        break;;
+
+
+        case STATIONNARY:
+        break;;
+
+
+        case TAKEOFF:
+        break;;
+
+
+        case FORWARD:
+        break;;
+
+  }
 }
 
 void updateMotorSpeed(){
