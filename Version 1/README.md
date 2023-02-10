@@ -1,14 +1,13 @@
 # Yet Another Flight Controller
 
-(project description) 
+The goal of our project is to create a drone that is affordable, quick, and simple to set up. 
 
 ## First of all
 
-(instructions to start configurating the project)
+Instrunctions before starting with the project : 
+- The estimated cost for components and materials is
 
-### prerequisite
-
-What is required to get started with your project
+### Prerequisite
 
 - An Arduino UNO board
 - An MPU 6050
