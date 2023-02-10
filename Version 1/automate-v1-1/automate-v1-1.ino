@@ -62,8 +62,9 @@ int motorbr_offset = 0;
 int motorbl_offset = 0;
 
 // Defining specific motor values
-int stationnarySpeed = 1200;
-int takeOffSpeed = 1400;
+int idleSpeed = 0;
+int stationnarySpeed = 90;
+int takeOffSpeed = 120;
 
 // Declaring a time variable (used in TimeOut)
 int timeInMs;
@@ -88,8 +89,6 @@ void setup() {
     //delay(2000);
 
 
-
-
     // ESC and motors SETUP
 
     Serial.println("Initializing motors / arming")
@@ -100,13 +99,29 @@ void setup() {
     BLmotor.attach(10);
     delay(15);
 
-    // ESC-Motors arming procedure
-    for(i = 50; i < 130; i++)
-    {
-        FLmotor.write(i);
-        Serial.println(i);
-        delay(1000);
-    }
+    // The following code executes the armament procedure
+    pinMode(LED_BUILTIN, OUTPUT);
+
+    delay(1000);
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(5000);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(1000);
+
+    FLmotor.write(0);
+    FRmotor.write(0);
+    BRmotor.write(0);
+    BLmotor.write(0);
+    delay(1000);
+    FLmotor.write(84);  // 84 is the armament value
+    FRmotor.write(84);
+    BRmotor.write(84);
+    BLmotor.write(84);
+    delay(1000);
+    FLmotor.write(0);   // Write back 0 for safety measures
+    FRmotor.write(0);
+    BRmotor.write(0);
+    BLmotor.write(0);
 
 
     currentBaseSpeed = 0;
@@ -117,29 +132,21 @@ void loop() {
 
     if (timeInMs > 30000){ // TIMEOUT
         while(1){
+            FLmotor.write(0);   // Write back 0 for safety measures
+            FRmotor.write(0);
+            BRmotor.write(0);
+            BLmotor.write(0);
             Serial.println("TimeOut");
             delay(1000);
         }
     }   
 
-    FLmotor.write(105);            // 
-    delay(1000);
-    FLmotor.write(91);            // 
-    delay(2000);
-
-    
     updateMotorSpeed();
-    
-    
-    if (timeInMs > 30000){
-        currentBaseSpeed = stationarySpeed;
-    }else if (timeInMs > 2000){
-        currentBaseSpeed = takeOffSpeed;
-    }
 
     switch(etat){
     
         case IDLE:
+            
         break;;
 
 

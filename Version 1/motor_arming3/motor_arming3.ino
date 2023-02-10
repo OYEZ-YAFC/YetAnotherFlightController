@@ -1,3 +1,6 @@
+// Arming of 3 motors at once (worked)
+// "Please be careful"
+
 #include <Servo.h>
 
 Servo esc1;
