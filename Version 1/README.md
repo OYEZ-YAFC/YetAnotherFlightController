@@ -20,7 +20,7 @@ Our quadcopter/drone is made up of several componants :
   You can usually find this information in the data sheet or manual of the motor, if not this is typically accomplished through the use of a switch or button on the drone's remote control or through software settings on the flight controller. 
   
   Here are the steps we followed :
-  - Writing the code ( look for #####filename in Version 1 )
+  Starting by Writing the code, a loop around the range of arming values
   ```cpp
   for(int i = 51; i < 130; i++){
     digitalWrite(LED_BUILTIN, HIGH);
@@ -31,9 +31,9 @@ Our quadcopter/drone is made up of several componants :
     delay(500);
   }
   ```
-   We start by setting a timer exactly when we plug the battery, and When the drone is armed, the ESC sends a signal to the motors to start spinning, and this produce a beep. After the beep the motors start rotating.
+   We coonect the flight controller, and set a timer exactly when pluging the battery. When the drone is armed, the ESC sends a signal to the motors to start spinning, and this produce a beeping sound. After the beep the motors start rotating.
    
-   We tested the values multiple times, to finally get 84 as the arming value. This is the final code :
+   We ran multiple tests, to finally get 84 as the arming value. This is the final code :
    ```cpp
     motor.write(0); // disarmed drone
     delay(1000);
