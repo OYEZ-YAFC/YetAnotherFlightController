@@ -5,7 +5,7 @@ Our quadcopter/drone is made up of several componants :
   - Four motors, to spin the propellers of the drone to enable them to fly. 
   - Four propellers for each motor, device with radiating blades.
   - Flight Controller made from an Arduino Uno.
-  - One Esc
+  - One Esc (Electronic speed controllers), controls and adjusts the speed of the motors.
  
 ## Controlling drone motors :
  ###  "ARM" Configuration :
