@@ -6,11 +6,13 @@
 Servo esc1;
 Servo esc2;
 Servo esc3;
+Servo esc4;
 
 void setup() {
   esc1.attach(5);
   esc2.attach(6);
   esc3.attach(9);
+  esc4.attach(10);
   delay(15);
 
   pinMode(LED_BUILTIN, OUTPUT);
@@ -24,14 +26,17 @@ void setup() {
   esc1.write(0);
   esc2.write(0);
   esc3.write(0);
+  esc4.write(0);
   delay(1000);
   esc1.write(84);
   esc2.write(84);
   esc3.write(84);
+  esc4.write(84);
   delay(1000);
   esc1.write(0);
   esc2.write(0);
   esc3.write(0);
+  esc4.write(0);
 
 }
 
@@ -39,9 +44,11 @@ void loop() {
   esc1.write(85);
   esc2.write(85);
   esc3.write(85);
+  esc4.write(85);
   delay(2000);
   esc1.write(60);
   esc2.write(60);
   esc3.write(60);
+  esc4.write(60);
   delay(2500);
 }

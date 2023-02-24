@@ -34,10 +34,10 @@ Servo BRmotor;
 Servo BLmotor;
 
 // Defining motor pins
-#define motorfl_pin1 5  // Front Left (fr) - Blue wire
-#define motorfr_pin2 6  // Front Right (fl) - Purple wire
-#define motorbr_pin1 9  // Back Right (br) - Green wire
-#define motorbl_pin2 10 // Back Left (bl) - Grey wire
+#define motorfl_pin 9  // Front Left (fr) - Purple wire
+#define motorfr_pin 6  // Front Right (fl) - Blue wire
+#define motorbr_pin 5  // Back Right (br) - Green wire
+#define motorbl_pin 10 // Back Left (bl) - Grey wire
 
 // Declaring the MPU module
 MPU6050 capteur;
@@ -63,7 +63,7 @@ int motorbl_offset = 0;
 
 // Defining specific motor values
 int idleSpeed = 0;
-int stationnarySpeed = 90;
+int stationnarySpeed = 75;
 int takeOffSpeed = 120;
 
 // Declaring a time variable (used in TimeOut)
@@ -84,19 +84,19 @@ void setup() {
     Serial.println ("Initializing MPU and testing connections");
     capteur.initialize();
     Serial.println(capteur.testConnection( ) ? "Successfully Connected" : "Connection failed");
-    delay(2000);
+    delay(500);
     //Serial.print("Reading Values");
     //delay(2000);
 
 
     // ESC and motors SETUP
 
-    Serial.println("Initializing motors / arming")
+    Serial.println("Initializing motors / arming");
     // Attaching the motors to the ESC
-    FLmotor.attach(5);
-    FRmotor.attach(6);
-    BRmotor.attach(9);
-    BLmotor.attach(10);
+    FLmotor.attach(motorfl_pin);
+    //FRmotor.attach(motorfr_pin);
+    BRmotor.attach(motorbr_pin);
+    //BLmotor.attach(motorbl_pin);
     delay(15);
 
     // The following code executes the armament procedure
@@ -109,34 +109,37 @@ void setup() {
     delay(1000);
 
     FLmotor.write(0);
-    FRmotor.write(0);
+    //FRmotor.write(0);
     BRmotor.write(0);
-    BLmotor.write(0);
+    //BLmotor.write(0);
     delay(1000);
     FLmotor.write(84);  // 84 is the armament value
-    FRmotor.write(84);
+    //FRmotor.write(84);
     BRmotor.write(84);
-    BLmotor.write(84);
+    //BLmotor.write(84);
     delay(1000);
     FLmotor.write(0);   // Write back 0 for safety measures
-    FRmotor.write(0);
+    //FRmotor.write(0);
     BRmotor.write(0);
-    BLmotor.write(0);
+    //BLmotor.write(0);
 
 
     currentBaseSpeed = 0;
+
+    delay(5000);
 }
 
 void loop() {
+/*
     timeInMs = millis();
 
-    if (timeInMs > 30000){ // TIMEOUT
+    if (timeInMs > 60000){ // TIMEOUT
         while(1){
             writeAll(0);
             Serial.println("TimeOut");
             delay(1000);
         }
-    }   
+    }   */
 
 
     switch(etat){
@@ -144,6 +147,7 @@ void loop() {
         case IDLE:
             currentBaseSpeed = idleSpeed;
             writeAll(0);
+            etat = STATIONNARY;
         break;;
 
 
@@ -165,6 +169,7 @@ void loop() {
         break;;
 
   }
+  delay(200);
 }
 
 void updateMotorSpeed(){
@@ -172,21 +177,43 @@ void updateMotorSpeed(){
   ax = map(ax, -17000, 17000, -125, 125);
   ay = map(ay, -17000, 17000, -125, 125);
 
-  motorfl_speed = currentBaseSpeed + motorl_offset - ax;
-  motorfr_speed = currentBaseSpeed + motorr_offset + ax;
+  motorfl_speed = max(0, currentBaseSpeed + motorfl_offset + ax);
+  motorbr_speed = max(0, currentBaseSpeed + motorbr_offset - ax);
 
-  motorbr_speed = currentBaseSpeed + motorf_offset - ay;
-  motorbl_speed = currentBaseSpeed + motorb_offset + ay;
+/*
+  motorfl_speed = max(0, currentBaseSpeed + motorfl_offset - ax);
+  motorfr_speed = max(0, currentBaseSpeed + motorfr_offset + ax);
 
-  analogWrite(motorf_pin2, motorf_speed);
-  analogWrite(motorb_pin2, motorb_speed);
-  analogWrite(motorr_pin2, motorr_speed);
-  analogWrite(motorl_pin2, motorl_speed);
+  motorbr_speed = max(0, currentBaseSpeed + motorbr_offset - ay);
+  motorbl_speed = max(0, currentBaseSpeed + motorbl_offset + ay);
+*/
+
+/*
+
+  Serial.print ("FL = ");
+  Serial.println (motorfl_speed, DEC);
+
+  Serial.print ("FR = ");
+  Serial.println (motorfr_speed, DEC);
+
+  Serial.print ("BR = ");
+  Serial.println (motorbr_speed, DEC);
+
+  Serial.print ("BL = ");
+  Serial.println (motorbl_speed, DEC);
+
+  Serial.println("----------------");
+
+  */
+  analogWrite(motorfl_pin, motorfl_speed);
+  //analogWrite(motorfr_pin, motorfr_speed);
+  analogWrite(motorbr_pin, motorbr_speed);
+  //analogWrite(motorbl_pin, motorbl_speed);
 }
 
 void writeAll(int value){
-    FLmotor.write(value);
-    FRmotor.write(value);
-    BRmotor.write(value);
-    BLmotor.write(value);
+  FLmotor.write(value);
+  //FRmotor.write(value);
+  BRmotor.write(value);
+  //BLmotor.write(value);
 }
