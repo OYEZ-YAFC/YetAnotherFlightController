@@ -7,7 +7,7 @@ See: https://betaflight.com/docs/wiki
 To configure Betaflight you should use the Betaflight-configurator GUI tool (Windows/OSX/Linux) which can be found here:
 
 https://github.com/betaflight/betaflight-configurator/releases/latest
-## Tools
+## Tools : 
 
 ## Betaflight Set up  :
 
