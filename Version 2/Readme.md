@@ -1,6 +1,6 @@
 # How to Setup Betaflight Firmware
 
-1.[Getting Started](getting-started)
+1.[Getting Started](Getting Started)
 2.Install Betaflight Configurator
 3.Update Firmware
 4.Configure Betaflight For The First Time
