@@ -54,7 +54,9 @@ An accelerometer measures the linear acceleration of the drone on 3 axes (X/Y/Z)
 To calibrate your accelerometer, you must position your chassis flat, and click on the “calibrate” button. Make sure that it is of course a flat surface and that nothing moves during the calibration.
 
 <img src = "imgs/setup.png" />
+
 ----------------------------------------------------------------------------------------------------------------
+
 ##   3.3.Port
 
 At this stage, you have several options:
@@ -65,6 +67,7 @@ At this stage, you have several options:
 - Declare a GPS to an UART (if you have one): always in the “Sensor input” column, choose GPS.
 
 <img src = "imgs/ports.png" />
+
 ----------------------------------------------------------------------------------------------------------------
 
 ##   3.4.Configuration
