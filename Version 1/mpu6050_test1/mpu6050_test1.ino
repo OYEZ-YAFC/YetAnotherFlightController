@@ -4,7 +4,7 @@
 // NB  wind each of the i2c cables around a GND cable ==> reduce noise of the i2c comunnication
 //servo.write(angle_value)  treats angle_value as an angle to which servo shaft has to be rotated.
 //servo.writeMicroseconds(micro_secs)  treats micro_secs as pulse duration for the PWM to be fed to the servo.
-// calibrer le esc ??
+
 /**
  * @file automate-v1-1.ino
  * @author OYEZ team - see readme.md
