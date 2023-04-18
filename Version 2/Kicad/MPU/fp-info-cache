@@ -1,4 +1,11 @@
-21567713872895680
+21571077347213219
+8-1879533-1
+RESC1608X50N
+<b>RESISTOR</b>
+
+0
+2
+2
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -2397,6 +2404,13 @@ Buzzer_Beeper
 Speaker_CUI_CMR-1206S-67
 Speaker, 30mW, 300-7000Hz, IP67 face, 12x6x2,25mm, https://www.cuidevices.com/product/resource/cmr-12062s-67.pdf
 speaker CUI
+0
+2
+2
+CL21A106KAYNNNE
+CAPC2012X145N
+CL21A106KAYNNNE
+Capacitor
 0
 2
 2
