@@ -276,7 +276,7 @@
     (property "Sheetname" "")
     (path "/c4ff1f99-f7cb-4924-b0bc-d1212d716ea4")
     (attr smd)
-    (fp_text reference "R9" (at -0.11 2.3) (layer "F.SilkS")
+    (fp_text reference "R9" (at -2.81 -1.2) (layer "F.SilkS")
         (effects (font (size 1.27 1.27) (thickness 0.254) bold))
       (tstamp 972eec21-cf0a-41de-b3d6-899e1d680d25)
     )
@@ -974,6 +974,9 @@
     (stroke (width 0.1) (type default)) (fill none) (layer "Edge.Cuts") (tstamp f113082e-6775-4576-b5f0-40351840f928))
   (gr_line (start 71.1 47.2) (end 96.9 47.2)
     (stroke (width 0.1) (type default)) (layer "Edge.Cuts") (tstamp ffab6563-32d3-4084-8c9c-e69b7d5a5942))
+  (gr_text "UT3 SECIL\n" (at 83.9 73.1) (layer "F.SilkS") (tstamp 4e2501c6-d3e8-497b-b0d2-d41ec3785349)
+    (effects (font (size 1.27 1.27) (thickness 0.254)))
+  )
 
   (segment (start 83.42 70) (end 78.83 70) (width 0.25) (layer "F.Cu") (net 5) (tstamp 02443555-48dc-49bc-b382-3834b3421aa6))
   (segment (start 78.984555 66.4) (end 79.9 65.484555) (width 0.25) (layer "F.Cu") (net 5) (tstamp 0669581c-d320-4251-b07b-6bc2a32cd951))
