@@ -1,6 +1,6 @@
 # YetAnotherFlightController
 
-Repository for the YAFC project at Université Paul Sabatier
+Repository for the YAFC project at Université Toulouse III - Paul Sabatier, 2022-2023, Master 1 Computer Science Embedded Systems.
 
 
 
