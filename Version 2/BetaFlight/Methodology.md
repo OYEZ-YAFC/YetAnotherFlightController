@@ -49,7 +49,7 @@ The “Setup” tab allows you to calibrate the accelerometer of your flight con
 
 An accelerometer measures the linear acceleration of the drone on 3 axes (X/Y/Z). As a result, you will be able to know if your drone is moving on one of these three axes.
 
-<img src  = "imgs/image 2.jpg" />
+<img src  = "imgs/drone.png" />
 
 To calibrate your accelerometer, you must position your chassis flat, and click on the “calibrate” button. Make sure that it is of course a flat surface and that nothing moves during the calibration.
 
